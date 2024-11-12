@@ -38,6 +38,10 @@
                     </svg>
                 </div>
 
+                <h1 style="text-align: center; font-size: 50px; font-weight: bold; color: #fff;">Rusdi - Pembunuh Nyamuk</h1>
+                <a href="http://127.0.0.1:8000/user/create" style="text-align: center; font-size: 30px; font-weight: bold; color: #fff;">Tambah User</a>
+
+
                 <div class="mt-16">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                         <a href="https://laravel.com/docs" class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
