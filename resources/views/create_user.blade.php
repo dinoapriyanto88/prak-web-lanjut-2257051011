@@ -15,12 +15,14 @@
             margin: 0;
         }
         form {
+            width: 20%;
+            padding: 20px;
             width: 15%;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
         }
-        .form-group input {
+        .form-group select, .form-group input {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
@@ -48,15 +50,21 @@
     <form method="post" action="{{ route('user.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-            <input type="text" name="nama" class="form-control" id="nama" aria-describedby="" placeholder="Masukkan nama Anda">
+            <input type="text" name="nama" class="form-control" id="nama" placeholder="Masukkan nama Anda">
         </div>
         <div class="form-group">
-            <input type="text" name="npm" class="form-control" id="npm" aria-describedby="" placeholder="Masukkan NPM Anda">
+            <input type="text" name="npm" class="form-control" id="npm" placeholder="Masukkan NPM Anda">
         </div>
         <div class="form-group">
-            <input type="text" name="kelas" class="form-control" id="kelas" aria-describedby="" placeholder="Masukkan Kelas Anda">
+            <select name="kelas" class="form-control" id="kelas">
+                <option value="" disabled selected>Pilih Kelas Anda</option>
+                @foreach($kelas as $k)
+                    <option value="{{ $k->id }}">{{ $k->nama_kelas }}</option>
+                @endforeach
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Tambah User</button>
     </form>
+
 </body>
 </html>

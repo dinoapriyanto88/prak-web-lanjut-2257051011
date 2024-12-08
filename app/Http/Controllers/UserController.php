@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
+use App\Models\UserModel;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -12,14 +14,35 @@ class UserController extends Controller
     }
     
     public function create() {
-        return view('create_user');
+        $kelas = Kelas::all();
+        return view('create_user', compact('kelas'));
     }
+
     public function store(Request $req) {
-        $data = [
-            'nama' => $req->input('nama'),
-            'npm' => $req->input('npm'),
-            'kelas' => $req->input('kelas'),
-        ];
-        return view('profile', $data);
+        // Validasi data yang diterima
+        $validatedData = $req->validate([
+            'nama' => 'required|string|max:255',
+            'npm' => 'required|string|max:255',
+            'kelas' => 'required|exists:kelas,id',
+        ]);
+    
+        // Simpan data ke dalam database
+        $user = UserModel::create([
+            'nama' => $validatedData['nama'],
+            'npm' => $validatedData['npm'],
+            'kelas_id' => $validatedData['kelas'],
+        ]);
+    
+        // Muat data kelas yang terkait dengan user
+        $user->load('kelas');
+    
+        // Tampilkan view profil dengan data yang baru disimpan
+        return view('profile', [
+            'nama' => $user->nama,
+            'npm' => $user->npm,
+            'kelas' => $user->kelas->nama_kelas ?? 'Kelas tidak ditemukan',
+        ]);
     }
-}
+    
+    }
+
