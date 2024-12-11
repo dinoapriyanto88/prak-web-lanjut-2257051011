@@ -14,6 +14,7 @@ class KelasSeeder extends Seeder
     public function run(): void
     {
     $data = ['A', 'B', 'C', 'D',];
+    
     foreach($data as $kelas) {
         Kelas::create([
             'nama_kelas' => $kelas,
