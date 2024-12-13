@@ -12,7 +12,7 @@ class UserModel extends Model
     protected $table = 'user';
     protected $guarded = ['id'];
 
-    protected $fillable = ['nama', 'npm', 'kelas_id'];
+    protected $fillable = ['nama', 'npm', 'kelas_id', 'foto'];
 
     public function kelas() {
         return $this->belongsTo(Kelas::class, 'kelas_id');

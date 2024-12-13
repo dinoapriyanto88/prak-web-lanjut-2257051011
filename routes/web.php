@@ -27,3 +27,4 @@ Route::get('/user/create', [UserController::class, 'create']);
 Route::post('/user/store', [UserController::class, 'store']) -> name('user.store');
 //Route ke method index pada uc untuk menampilkan daftar user
 Route::get('/user', [UserController::class, 'index']);
+Route::delete('/user/{id}', [UserController::class, 'destroy']) -> name('user.delete');

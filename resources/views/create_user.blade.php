@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data"> <!-- Tambahkan enctype -->
     @csrf
     <div class="form-group">
         <input type="text" name="nama" class="form-control" id="nama" aria-describedby="" placeholder="Masukkan nama Anda" >
@@ -22,6 +22,14 @@
             @endforeach
         </select>
         @error('kelas_id')
+            <div style="color: red; font-size: 12px; margin-top: -10px; margin-bottom: 10px; font-family: Arial, Helvetica, sans-serif;">{{ $message }}</div>
+        @enderror
+    </div>
+    <!-- Tambahkan input file untuk foto -->
+    <div class="form-group">
+        <label for="foto">Foto:</label>
+        <input type="file" name="foto" class="form-control" id="foto">
+        @error('foto')
             <div style="color: red; font-size: 12px; margin-top: -10px; margin-bottom: 10px; font-family: Arial, Helvetica, sans-serif;">{{ $message }}</div>
         @enderror
     </div>
