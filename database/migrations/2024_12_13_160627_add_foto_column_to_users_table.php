@@ -9,18 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
-{
-    Schema::table('user', function (Blueprint $table) {
-        $table->string('foto')->nullable(); // Menambahkan kolom 'foto' yang bersifat opsional
-    });
-}
-
-public function down()
-{
-    Schema::table('user', function (Blueprint $table) {
-        $table->dropColumn('foto'); // Menghapus kolom 'foto' jika dilakukan rollback
-    });
-}
-
+    public function up(): void
+    {
+        Schema::table('user', function(Blueprint $table){
+            $table->string('foto')->nullable();
+        });
+    }
+    
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('user', function(Blueprint $table){
+            $table->dropColumn('foto');
+        });
+    }
 };
